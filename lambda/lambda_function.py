@@ -35,6 +35,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
                 .ask(speak_output)
                 .response
         )
+        FrasesIntentHandler()
 
 
 class HelloWorldIntentHandler(AbstractRequestHandler):
