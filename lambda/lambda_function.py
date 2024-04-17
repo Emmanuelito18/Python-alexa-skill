@@ -28,7 +28,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         #speak_output = "Welcome, you can say Hello or Help. Which would you like to try?"
-        speak_output= "Esto es una prueba de mi skill de alexa, llamada mayordomo servicial creada por: Emmanuelito18"
+        speak_output= "Esto es una prueba de mi skill de alexa, llamada mayordomo servicial, creada por: Emmanuelito18"
 
         return (
             handler_input.response_builder
