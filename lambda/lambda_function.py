@@ -27,6 +27,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
+        FrasesIntentHandler()#Estoy probando la invocación de mi handler personalizado
         speak_output = "Welcome, you can say Hello or Help. Which would you like to try?"
 
         return (
@@ -35,7 +36,6 @@ class LaunchRequestHandler(AbstractRequestHandler):
                 .ask(speak_output)
                 .response
         )
-        FrasesIntentHandler()#Estoy probando si funciona esta invocación a mi Hanler personalizado
 
 
 class HelloWorldIntentHandler(AbstractRequestHandler):
