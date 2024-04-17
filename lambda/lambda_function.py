@@ -62,7 +62,6 @@ class FrasesIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         return ask_utils.is_intent_name("FrasesIntent")(handler_input)
 
-
     def handle(self, handler_input):
         random_number = random.randint(0, 100)
 
