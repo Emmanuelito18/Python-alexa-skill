@@ -91,7 +91,7 @@ class FrasesIntentHandler(AbstractRequestHandler):
             return (
                 handler_input.response_builder
                 .speak(frase)
-                .set_card( "Prueba de Mayordomo servicial", frase)
+                .set_card( SimpleCard("Prueba de Mayordomo servicial", frase))
                 .set_should_end_session(True).response
             )
         else:
@@ -106,7 +106,7 @@ class FrasesIntentHandler(AbstractRequestHandler):
             return (
                 handler_input.response_builder
                 .speak(frase)
-                .set_card("Prueba de Mayordomo servicial", frase)
+                .set_card(SimpleCard("Prueba de Mayordomo servicial", frase))
                 .set_reprompt(frase).set_should_end_session(True).response
             )
 
