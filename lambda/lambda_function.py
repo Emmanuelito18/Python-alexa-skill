@@ -60,9 +60,11 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
 class FrasesIntentHandler(AbstractRequestHandler):
     '''Handler for Frases intent.'''
     def can_handle(self, handler_input):
+        #type: (handler_input) -> bool
         return ask_utils.is_intent_name("FrasesIntent")(handler_input)
 
     def handle(self, handler_input):
+        #type: (handler_input) -> Response
         random_number = random.randint(0, 100)
 
         if random_number % 2 == 0:
