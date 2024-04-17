@@ -54,6 +54,59 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
                 .response
         )
 
+class FrasesIntentHandler:
+    '''Handler for Frases intent.'''
+    def can_handle(self, handler_input):
+        return handler_input.matches_intent_name("FrasesIntent")(handler_input)
+
+    def handle(self, handler_input):
+        random_number = random.randint(0, 100)
+
+        if random_number % 2 == 0:
+            frases_simples = ["Es mi deber servirle.", "Por supuesto señor.",
+                               "Enseguida, señor.", "Por supuesto, amo.",
+                              "Lo haré de inmediato.", "Estoy en ello.", 
+                              "Ha sido un placer servirle.","Mi señor su solicitud se ha cumplido.", 
+                              "Mi señor, su solicitud se ha cumplido como lo solicitó.",
+                              "Sus deseos se han realizado.", "He atendido su solicitud.", 
+                              "Muy bien.", "Excelente.","Está hecho.", "Considérelo hecho.", 
+                              "Voy corriendo.", "Ya está hecho.",
+                              "En un pizpáz.","En un santiamén.", "Así será.", 
+                              "Un momento por favor.", "Un momento por favor. Está listo.",
+                              "Un momento por favor. Ya está.", 
+                              "Un momento por favor. Ya está listo.",
+                              "Un momento por favor. Está hecho.", 
+                              "Un momento por favor. Su solicitud se ha completado con éxito.",
+                              "Espere un momento por favor.", 
+                              "Espere un momento por favor. Está listo.",
+                              "Espere un momento por favor. Ya está.", 
+                              "Espere un momento por favor. Ya está listo.",
+                              "Espere un momento por favor. Está hecho.", 
+                              "Espere un momento por favor. Su solicitud se ha completado con éxito."]
+            seleccionado=random.randint(0,len(frases_simples)-1)
+            frase = frases_simples[seleccionado]
+
+            return (
+                handler_input.response_builder
+                .speak(frase)
+                .set_card( "Prueba de Mayordomo servicial", frase)
+                .set_should_end_session(True).response
+            )
+        else:
+            frases_con_pregunta = [
+                                "Solicitud completada, ¿hay algo más en lo que le pueda servir?.",
+                                    "¿Algo más en lo que le pueda servir señor?", 
+                                    "¿Alguna otra cosa más?",
+                                   "¿Necesita algo más?", "¿algo más que necesite?"]
+            seleccionado=random.randint(0,len(frases_con_pregunta)-1)
+            frase = frases_con_pregunta[seleccionado]
+
+            return (
+                handler_input.response_builder
+                .speak(frase)
+                .set_card("Prueba de Mayordomo servicial", frase)
+                .set_reprompt(frase).set_should_end_session(True).response
+            )
 
 class HelpIntentHandler(AbstractRequestHandler):
     """Handler for Help Intent."""
@@ -172,6 +225,7 @@ sb = SkillBuilder()
 
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(HelloWorldIntentHandler())
+sb.add_request_handler(FrasesIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(FallbackIntentHandler())
