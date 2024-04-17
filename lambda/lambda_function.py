@@ -54,7 +54,7 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
                 .response
         )
 
-class FrasesIntentHandler:
+class FrasesIntentHandler(AbstractRequestHandler):
     '''Handler for Frases intent.'''
     def can_handle(self, handler_input):
         return ask_utils.is_intent_name("FrasesIntent")(handler_input)
