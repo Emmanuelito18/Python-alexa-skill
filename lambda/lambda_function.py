@@ -28,14 +28,15 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         #speak_output = "Welcome, you can say Hello or Help. Which would you like to try?"
-        speak_output= "Esto es una prueba de mi skill de alexa llamada mayordomo servicial"
+        FrasesIntentHandler()
+        '''speak_output= "Esto es una prueba de mi skill de alexa llamada mayordomo servicial"
 
         return (
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
                 .response
-        )
+        )'''
 
 
 class HelloWorldIntentHandler(AbstractRequestHandler):
