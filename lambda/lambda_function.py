@@ -28,15 +28,36 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         #speak_output = "Welcome, you can say Hello or Help. Which would you like to try?"
-        '''speak_output= "Esto es una prueba de mi skill de alexa, llamada mayordomo servicial, creada por: Emmanuelito18"
+        speak_output= "Esto es una prueba de mi skill de alexa, llamada mayordomo servicial, creada por: Emmanuelito18"
 
         return (
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
                 .response
+        )
+
+
+class HelloWorldIntentHandler(AbstractRequestHandler):
+    """Handler for Hello World Intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return ask_utils.is_intent_name("HelloWorldIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        '''speak_output = "Hello World!"
+
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
+                # .ask("add a reprompt if you want to keep the session open for the user to respond")
+                .response
         )'''
-        random_number = random.randint(0, 100)
+        decirFrases()
+
+def decirFrases():
+    random_number = random.randint(0, 100)
 
         if random_number % 2 == 0:
             frases_simples = ["Es mi deber servirle.", "Por supuesto señor.",
@@ -83,24 +104,6 @@ class LaunchRequestHandler(AbstractRequestHandler):
                 .set_card(SimpleCard("Prueba de Mayordomo servicial", frase))
                 .set_reprompt(frase).set_should_end_session(True).response
             )
-
-
-class HelloWorldIntentHandler(AbstractRequestHandler):
-    """Handler for Hello World Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("HelloWorldIntent")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        speak_output = "Hello World!"
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                # .ask("add a reprompt if you want to keep the session open for the user to respond")
-                .response
-        )
 
 class FrasesIntentHandler(AbstractRequestHandler):
     '''Handler for Frases intent.'''
